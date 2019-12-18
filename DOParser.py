@@ -40,7 +40,7 @@ class DOParser:
                 for synonym in node['meta']['synonyms']:
                     self.diseases.setdefault(name, [])
                     if synonym['val'] not in self.diseases[name]:
-                        self.diseases[name].append(synonym['val'])
+                        self.diseases[name].append({'name': node['lbl'], 'synonym': synonym['val']})
 
     def fetch(self):
         '''
@@ -55,5 +55,6 @@ class DOParser:
 
 do_parser = DOParser()
 do_parser.fetch()
+print(do_parser.diseases["DO_AGR_slim"])
 for key in do_parser.diseases:
     print(key, len(do_parser.diseases[key]))
