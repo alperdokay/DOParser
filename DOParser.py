@@ -37,8 +37,7 @@ class DOParser:
         nodes = data['graphs'][0]['nodes']
         for node in nodes:
             if 'synonyms' in node['meta'].keys():
-                synonyms = node['meta']['synonyms']
-                for synonym in synonyms:
+                for synonym in node['meta']['synonyms']:
                     self.diseases.setdefault(name, [])
                     if synonym['val'] not in self.diseases[name]:
                         self.diseases[name].append(synonym['val'])
